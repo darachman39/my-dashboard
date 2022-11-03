@@ -2,16 +2,10 @@
 import { NCard, NDataTable, NButton, NSpace, NModal, NForm, NFormItem, NInput } from 'naive-ui';
 import { h, ref, onMounted, computed } from 'vue';
 import axios from 'axios';
-// import { FontAwesome } from '@vicons/fa';
 
-// import { Icon } from '@vicons/utils';
+import { Plus } from '@vicons/fa'
 
-// export default {
-//   components: {
-//     Icon,
-//     FontAwesome
-//   }
-// }
+import { Icon } from '@vicons/utils'
 
 const data = ref([])
 const currentPage = ref(1)
@@ -171,8 +165,16 @@ const handlePageChange = (page) => {
 </script>
 
 <template>
-  <NCard title="Pegawai">
-    <NButton @click="showModal = true">Add New</NButton>
+  <NCard title="Daftar Hewan">
+    <Icon>
+      <NButton @click="showModal = true">
+        <template #icon>
+        <Icon>
+          <Plus />
+        </Icon>
+      </template>Add New
+    </NButton>
+    </Icon>
     <NDataTable jabatan
       remote
       :loading="isLoading"
@@ -182,7 +184,7 @@ const handlePageChange = (page) => {
       @update:page="handlePageChange" />
   </NCard>
   <NModal v-model:show="showModal">
-    <NCard style="width: 50%" title="Data Pegawai">
+    <NCard style="width: 50%" title="Data Hewan">
       <NForm
         @submit.prevent="onSubmitForm"
         :model="formData"
